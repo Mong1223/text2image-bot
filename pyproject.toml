@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "text2image-bot"
+version = "1.0.0"
+description = "Telegram-бот для генерации изображений по текстовому описанию (Stable Diffusion + FastAPI + aiogram)"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Temir Mongush" }]
+requires-python = ">=3.10"
+dependencies = [
+    "aiogram>=3.4,<4",
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.27",
+    "httpx>=0.27",
+    "pydantic>=2.5",
+    "pydantic-settings>=2.1",
+    "Pillow>=10.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-asyncio>=0.23", "ruff>=0.4"]
+
+[project.scripts]
+t2i-service = "text2image_bot.service.__main__:main"
+t2i-bot = "text2image_bot.bot.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

@@ -1,0 +1,23 @@
+# Stable Diffusion web UI запускается отдельно на хосте с GPU (флаг --api).
+# Без GPU можно поставить SERVICE_BACKEND=dummy в .env.
+services:
+  service:
+    build: .
+    command: t2i-service
+    env_file: .env
+    environment:
+      SERVICE_HOST: 0.0.0.0
+      SERVICE_A1111_URL: ${SERVICE_A1111_URL_DOCKER:-http://host.docker.internal:7860}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "8000:8000"
+
+  bot:
+    build: .
+    command: t2i-bot
+    env_file: .env
+    environment:
+      BOT_SERVICE_URL: http://service:8000
+    depends_on:
+      - service
