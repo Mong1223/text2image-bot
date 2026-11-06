@@ -1,6 +1,6 @@
 # text2image-bot
 
-[![CI](https://github.com/OWNER/text2image-bot/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/text2image-bot/actions/workflows/ci.yml)
+[![CI](https://github.com/Mong1223/text2image-bot/actions/workflows/ci.yml/badge.svg)](https://github.com/Mong1223/text2image-bot/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
@@ -52,7 +52,7 @@ webui-user.bat --api    # Windows (или добавьте --api в COMMANDLINE_
 ### 2. Установка
 
 ```bash
-git clone https://github.com/OWNER/text2image-bot.git
+git clone https://github.com/Mong1223/text2image-bot.git
 cd text2image-bot
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
